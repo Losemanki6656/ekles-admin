@@ -33,6 +33,7 @@ class CategoryCrudController extends CrudController
     protected function setupListOperation(): void
     {
 
+        CRUD::column('id');
         CRUD::addColumn([
             'name' => 'name',
             'label' => 'Name (Uz)',

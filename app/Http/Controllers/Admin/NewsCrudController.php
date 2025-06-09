@@ -13,7 +13,6 @@ use Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 use Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-
 class NewsCrudController extends CrudController
 {
     use ListOperation;
@@ -22,16 +21,19 @@ class NewsCrudController extends CrudController
     use DeleteOperation;
     use ShowOperation;
 
-    public function setup()
+    public function setup(): void
     {
         CRUD::setModel(News::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/news');
         CRUD::setEntityNameStrings('news', 'news list');
     }
 
-    protected function setupListOperation()
+    protected function setupListOperation(): void
     {
-        CRUD::column('category_id')->type('select')->entity('category')->model(Category::class)->attribute('name->uz');
+        CRUD::addColumn('id');
+
+        CRUD::column('category_id')->type('text');
+
         CRUD::addColumn([
             'name' => 'title',
             'label' => 'Title (Uz)',
@@ -43,7 +45,7 @@ class NewsCrudController extends CrudController
         CRUD::addColumn(['name' => 'published', 'type' => 'boolean']);
     }
 
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(NewsRequest::class);
 
@@ -79,7 +81,7 @@ class NewsCrudController extends CrudController
         ]);
 
         CRUD::addField([
-            'name' => 'as',
+            'name' => 'cre',
             'type' => 'datetime_picker'
         ]);
 
@@ -90,7 +92,7 @@ class NewsCrudController extends CrudController
         ]);
     }
 
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
     }

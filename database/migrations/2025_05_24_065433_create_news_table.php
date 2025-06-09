@@ -14,7 +14,7 @@ class CreateNewsTable extends Migration
             $table->foreignId('category_id')->constrained('categories');
             $table->json('title');
             $table->json('description');
-            $table->date('created');
+            $table->date('cre');
             $table->boolean('published')->default(false);
             $table->timestamps();
             $table->softDeletes();
