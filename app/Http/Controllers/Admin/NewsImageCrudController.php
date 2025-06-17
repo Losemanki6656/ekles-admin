@@ -23,7 +23,6 @@ class NewsImageCrudController extends CrudController
     use DeleteOperation;
     use ShowOperation;
 
-
     public function setup(): void
     {
         CRUD::setModel(NewsImage::class);
@@ -36,8 +35,6 @@ class NewsImageCrudController extends CrudController
     {
         CRUD::column('news_id')->type('text');
         CRUD::column('image')->type('image');
-
-
     }
 
     protected function setupCreateOperation(): void
@@ -56,8 +53,8 @@ class NewsImageCrudController extends CrudController
         CRUD::addField([
             'name' => 'image',
             'label' => 'Image',
-            'type' => 'upload',
-            'upload' => true,
+            'type' => 'image',
+            'crop' => true,
             'disk' => 'public'
         ]);
     }
