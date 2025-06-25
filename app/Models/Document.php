@@ -9,19 +9,9 @@ class Document extends Model
 {
     use CrudTrait;
 
-    /*
-    |--------------------------------------------------------------------------
-    | GLOBAL VARIABLES
-    |--------------------------------------------------------------------------
-    */
 
     protected $table = 'documents';
-    // protected $primaryKey = 'id';
-    // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
-    // protected $hidden = [];
-    // protected $dates = [];
 
     public function setTitleAttribute($value): void
     {
@@ -63,16 +53,16 @@ class Document extends Model
         return [$decoded];
     }
 
-    public function setFileAttribute($value)
-    {
-        $attribute_name = "file";
-        $disk = "public";
-        $destination_path = "files";
-
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
-
-        // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
-    }
+//    public function setFileAttribute($value)
+//    {
+//        $attribute_name = "file";
+//        $disk = "public";
+//        $destination_path = "files";
+//
+//        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path);
+//
+//        // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
+//    }
 
     public function getSlugWithLink()
     {

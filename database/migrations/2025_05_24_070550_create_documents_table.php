@@ -13,7 +13,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->json('title');
             $table->json('description');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
